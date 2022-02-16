@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-
-import '../styles/index.css'
 import tw from 'twin.macro'
+import { Helmet } from "react-helmet"
+import { helmetProps, structuredData } from '../helmetProps'
+import '../styles/index.css'
 
 const navigation = [
   { name: 'Changelog', href: '#' },
@@ -140,325 +141,328 @@ const footerNavigation = {
 
 export default function Index() {
   return (
-    <div className="bg-white">
-      <header className="relative pb-24 bg-sky-800 sm:pb-32">
-        <div className="absolute inset-0">
-          <img
-            className="w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100"
-            alt=""
-          />
-          <div
-            className="absolute inset-0 bg-gradient-to-l from-sky-800 to-cyan-700 mix-blend-multiply"
-            aria-hidden="true"
-          />
-        </div>
-        <Popover as="div" className="relative z-10">
-          <nav
-            className="relative max-w-7xl mx-auto flex items-center justify-between pt-6 pb-2 px-4 sm:px-6 lg:px-8"
-            aria-label="Global"
-          >
-            <div className="flex items-center justify-between w-full lg:w-auto">
-              <a href="#">
-                <span className="sr-only">Workflow</span>
-                <img
-                  className="h-8 w-auto sm:h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=300"
-                  alt=""
-                />
-              </a>
-              <div className="-mr-2 flex items-center lg:hidden">
-                <Popover.Button className="bg-sky-800 bg-opacity-0 rounded-md p-2 inline-flex items-center justify-center text-cyan-100 hover:bg-opacity-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
-                  <MenuIcon className="h-6 w-6" aria-hidden="true" />
-                </Popover.Button>
-              </div>
-            </div>
-            <div className="hidden space-x-10 lg:flex lg:ml-10">
-              {navigation.map((item) => (
-                <a key={item.name} href={item.href} className="text-base font-medium text-white hover:text-cyan-100">
-                  {item.name}
-                </a>
-              ))}
-            </div>
-            <div className="hidden lg:flex lg:items-center lg:space-x-6">
-              <a
-                href="#"
-                className="py-2 px-6 bg-white bg-opacity-10 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-20"
-              >
-                Login
-              </a>
-            </div>
-          </nav>
-
-          <Transition
-            as={Fragment}
-            enter="duration-150 ease-out"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="duration-100 ease-in"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
-            <Popover.Panel focus className="absolute top-0 inset-x-0 p-2 transition transform origin-top lg:hidden p-">
-              <div className="rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-                <div className="px-5 pt-4 flex items-center justify-between">
-                  <div>
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=400"
-                      alt=""
-                    />
-                  </div>
-                  <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-stone-400 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
-                      <span className="sr-only">Close menu</span>
-                      <XIcon className="h-6 w-6" aria-hidden="true" />
-                    </Popover.Button>
-                  </div>
-                </div>
-                <div className="pt-5 pb-6">
-                  <div className="px-2 space-y-1">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-stone-900 hover:bg-stone-50"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                  <div className="mt-6 px-5">
-                    <a
-                      href="#"
-                      className="block text-center w-full py-2 px-4 border border-transparent rounded-md shadow bg-green-400 text-white font-medium hover:bg-green-500"
-                    >
-                      Login
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </Popover.Panel>
-          </Transition>
-        </Popover>
-
-        <div className="relative mt-24 max-w-md mx-auto px-4 sm:max-w-3xl sm:mt-32 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">Get in touch</h1>
-          <p className="mt-6 text-xl text-cyan-100 max-w-3xl">
-            Mattis amet hendrerit dolor, quisque lorem pharetra. Pellentesque lacus nisi urna, arcu sociis eu. Orci vel
-            lectus nisl eget eget ut consectetur. Sit justo viverra non adipisicing elit distinctio.
-          </p>
-        </div>
-      </header>
-
-      <main>
-        {/* Side-by-side grid */}
-        <div className="bg-white">
-          <div className="max-w-md mx-auto py-24 px-4 sm:max-w-3xl sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
-            <div className="divide-y divide-stone-200">
-              <section className="lg:grid lg:grid-cols-3 lg:gap-8" aria-labelledby="contact-heading">
-                <h2 id="contact-heading" className="text-2xl font-extrabold text-stone-900 sm:text-3xl">
-                  Get in touch
-                </h2>
-                <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
-                  {contactDetails.map((item) => (
-                    <div key={item.name}>
-                      <h3 className="text-lg font-medium text-stone-900">{item.name}</h3>
-                      <dl className="mt-2 text-base text-stone-500">
-                        <div>
-                          <dt className="sr-only">Email</dt>
-                          <dd>{item.email}</dd>
-                        </div>
-                        <div className="mt-1">
-                          <dt className="sr-only">Phone number</dt>
-                          <dd>{item.telephone}</dd>
-                        </div>
-                      </dl>
-                    </div>
-                  ))}
-                </div>
-              </section>
-              <section className="mt-16 pt-16 lg:grid lg:grid-cols-3 lg:gap-8" aria-labelledby="location-heading">
-                <h2 id="location-heading" className="text-2xl font-extrabold text-stone-900 sm:text-3xl">
-                  Locations
-                </h2>
-                <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
-                  {locations.map((location) => (
-                    <div key={location.city}>
-                      <h3 className="text-lg font-medium text-stone-900">{location.city}</h3>
-                      <div className="mt-2 text-base text-stone-500 space-y-1">
-                        {location.address.map((line) => (
-                          <p key={line}>{line}</p>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </div>
+    <Helmet {...helmetProps}>
+      <script type="application/ld+json">{JSON.stringify(structuredData, undefined, 4)}</script>
+      <div className="bg-white">
+        <header className="relative pb-24 bg-sky-800 sm:pb-32">
+          <div className="absolute inset-0">
+            <img
+              className="w-full h-full object-cover"
+              src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100"
+              alt=""
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-l from-sky-800 to-cyan-700 mix-blend-multiply"
+              aria-hidden="true"
+            />
           </div>
-        </div>
-
-        {/* FAQ */}
-        <div className="bg-stone-50">
-          <div className="max-w-md mx-auto py-24 px-4 sm:max-w-3xl sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
-            <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-              <div>
-                <h2 className="text-3xl font-extrabold text-stone-900">Frequently asked questions</h2>
-                <p className="mt-4 text-lg text-stone-500">
-                  Can’t find the answer you’re looking for? Reach out to our{' '}
-                  <a href="#" className="font-medium text-cyan-700 hover:text-cyan-600">
-                    customer support
-                  </a>{' '}
-                  team.
-                </p>
-              </div>
-              <div className="mt-12 lg:mt-0 lg:col-span-2">
-                <dl className="space-y-12">
-                  {faqs.map((faq) => (
-                    <div key={faq.id}>
-                      <dt className="text-lg font-medium text-stone-900">{faq.question}</dt>
-                      <dd className="mt-2 text-base text-stone-500">{faq.answer}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Newsletter */}
-        <div className="relative">
-          <div className="absolute left-0 right-0 h-1/2 bg-stone-50" aria-hidden="true" />
-          <div className="relative max-w-md mx-auto px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-            <div className="py-10 px-6 bg-gradient-to-l from-sky-800 to-cyan-700 rounded-3xl sm:py-16 sm:px-12 lg:py-20 lg:px-20 lg:flex lg:items-center">
-              <div className="lg:w-0 lg:flex-1">
-                <h2 className="text-3xl font-extrabold tracking-tight text-white">Sign up for our newsletter</h2>
-                <p className="mt-4 max-w-3xl text-lg text-cyan-100">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt
-                  amet fugiat.
-                </p>
-              </div>
-              <div className="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1">
-                <form className="sm:flex">
-                  <label htmlFor="email-address" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="email-address"
-                    name="email-address"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="w-full border-white px-5 py-3 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-white rounded-md"
-                    placeholder="Enter your email"
+          <Popover as="div" className="relative z-10">
+            <nav
+              className="relative max-w-7xl mx-auto flex items-center justify-between pt-6 pb-2 px-4 sm:px-6 lg:px-8"
+              aria-label="Global"
+            >
+              <div className="flex items-center justify-between w-full lg:w-auto">
+                <a href="#">
+                  <span className="sr-only">Workflow</span>
+                  <img
+                    className="h-8 w-auto sm:h-10"
+                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=300"
+                    alt=""
                   />
-                  <button
-                    type="submit"
-                    className="mt-3 w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-green-400 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
-                  >
-                    Notify me
-                  </button>
-                </form>
-                <p className="mt-3 text-sm text-cyan-100">
-                  We care about the protection of your data. Read our{' '}
-                  <a href="#" className="text-white font-medium underline">
-                    Privacy Policy.
-                  </a>
-                </p>
+                </a>
+                <div className="-mr-2 flex items-center lg:hidden">
+                  <Popover.Button className="bg-sky-800 bg-opacity-0 rounded-md p-2 inline-flex items-center justify-center text-cyan-100 hover:bg-opacity-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
+                    <span className="sr-only">Open main menu</span>
+                    <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                  </Popover.Button>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <footer className="bg-white" aria-labelledby="footer-heading">
-        <h2 id="footer-heading" className="sr-only">
-          Footer
-        </h2>
-        <div className="max-w-md mx-auto py-12 px-4 sm:max-w-3xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div className="space-y-8 xl:col-span-1">
-              <img
-                className="h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=400"
-                alt="Company name"
-              />
-              <p className="text-stone-500 text-base">
-                Making the world a better place through constructing elegant hierarchies.
-              </p>
-              <div className="flex space-x-6">
-                {footerNavigation.social.map((item) => (
-                  <a key={item.name} href={item.href} className="text-stone-400 hover:text-stone-500">
-                    <span className="sr-only">{item.name}</span>
-                    <item.icon className="h-6 w-6" aria-hidden="true" />
+              <div className="hidden space-x-10 lg:flex lg:ml-10">
+                {navigation.map((item) => (
+                  <a key={item.name} href={item.href} className="text-base font-medium text-white hover:text-cyan-100">
+                    {item.name}
                   </a>
                 ))}
               </div>
-            </div>
-            <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Solutions</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {footerNavigation.solutions.map((item) => (
-                      <li key={item.name}>
-                        <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Support</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {footerNavigation.support.map((item) => (
-                      <li key={item.name}>
-                        <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="hidden lg:flex lg:items-center lg:space-x-6">
+                <a
+                  href="#"
+                  className="py-2 px-6 bg-white bg-opacity-10 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-20"
+                >
+                  Login
+                </a>
               </div>
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Company</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {footerNavigation.company.map((item) => (
-                      <li key={item.name}>
-                        <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
+            </nav>
+
+            <Transition
+              as={Fragment}
+              enter="duration-150 ease-out"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="duration-100 ease-in"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Popover.Panel focus className="absolute top-0 inset-x-0 p-2 transition transform origin-top lg:hidden p-">
+                <div className="rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                  <div className="px-5 pt-4 flex items-center justify-between">
+                    <div>
+                      <img
+                        className="h-8 w-auto"
+                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=400"
+                        alt=""
+                      />
+                    </div>
+                    <div className="-mr-2">
+                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-stone-400 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+                        <span className="sr-only">Close menu</span>
+                        <XIcon className="h-6 w-6" aria-hidden="true" />
+                      </Popover.Button>
+                    </div>
+                  </div>
+                  <div className="pt-5 pb-6">
+                    <div className="px-2 space-y-1">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="block px-3 py-2 rounded-md text-base font-medium text-stone-900 hover:bg-stone-50"
+                        >
                           {item.name}
                         </a>
-                      </li>
-                    ))}
-                  </ul>
+                      ))}
+                    </div>
+                    <div className="mt-6 px-5">
+                      <a
+                        href="#"
+                        className="block text-center w-full py-2 px-4 border border-transparent rounded-md shadow bg-green-400 text-white font-medium hover:bg-green-500"
+                      >
+                        Login
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Legal</h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {footerNavigation.legal.map((item) => (
-                      <li key={item.name}>
-                        <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 border-t border-stone-200 pt-8">
-            <p className="text-base text-stone-400 xl:text-center">
-              &copy; 2020 Workflow, Inc. All rights reserved.
+              </Popover.Panel>
+            </Transition>
+          </Popover>
+
+          <div className="relative mt-24 max-w-md mx-auto px-4 sm:max-w-3xl sm:mt-32 sm:px-6 lg:max-w-7xl lg:px-8">
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">Get in touch</h1>
+            <p className="mt-6 text-xl text-cyan-100 max-w-3xl">
+              Mattis amet hendrerit dolor, quisque lorem pharetra. Pellentesque lacus nisi urna, arcu sociis eu. Orci vel
+              lectus nisl eget eget ut consectetur. Sit justo viverra non adipisicing elit distinctio.
             </p>
           </div>
-        </div>
-      </footer>
-    </div>
+        </header>
+
+        <main>
+          {/* Side-by-side grid */}
+          <div className="bg-white">
+            <div className="max-w-md mx-auto py-24 px-4 sm:max-w-3xl sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
+              <div className="divide-y divide-stone-200">
+                <section className="lg:grid lg:grid-cols-3 lg:gap-8" aria-labelledby="contact-heading">
+                  <h2 id="contact-heading" className="text-2xl font-extrabold text-stone-900 sm:text-3xl">
+                    Get in touch
+                  </h2>
+                  <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
+                    {contactDetails.map((item) => (
+                      <div key={item.name}>
+                        <h3 className="text-lg font-medium text-stone-900">{item.name}</h3>
+                        <dl className="mt-2 text-base text-stone-500">
+                          <div>
+                            <dt className="sr-only">Email</dt>
+                            <dd>{item.email}</dd>
+                          </div>
+                          <div className="mt-1">
+                            <dt className="sr-only">Phone number</dt>
+                            <dd>{item.telephone}</dd>
+                          </div>
+                        </dl>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+                <section className="mt-16 pt-16 lg:grid lg:grid-cols-3 lg:gap-8" aria-labelledby="location-heading">
+                  <h2 id="location-heading" className="text-2xl font-extrabold text-stone-900 sm:text-3xl">
+                    Locations
+                  </h2>
+                  <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
+                    {locations.map((location) => (
+                      <div key={location.city}>
+                        <h3 className="text-lg font-medium text-stone-900">{location.city}</h3>
+                        <div className="mt-2 text-base text-stone-500 space-y-1">
+                          {location.address.map((line) => (
+                            <p key={line}>{line}</p>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <div className="bg-stone-50">
+            <div className="max-w-md mx-auto py-24 px-4 sm:max-w-3xl sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
+              <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+                <div>
+                  <h2 className="text-3xl font-extrabold text-stone-900">Frequently asked questions</h2>
+                  <p className="mt-4 text-lg text-stone-500">
+                    Can’t find the answer you’re looking for? Reach out to our{' '}
+                    <a href="#" className="font-medium text-cyan-700 hover:text-cyan-600">
+                      customer support
+                    </a>{' '}
+                    team.
+                  </p>
+                </div>
+                <div className="mt-12 lg:mt-0 lg:col-span-2">
+                  <dl className="space-y-12">
+                    {faqs.map((faq) => (
+                      <div key={faq.id}>
+                        <dt className="text-lg font-medium text-stone-900">{faq.question}</dt>
+                        <dd className="mt-2 text-base text-stone-500">{faq.answer}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div className="relative">
+            <div className="absolute left-0 right-0 h-1/2 bg-stone-50" aria-hidden="true" />
+            <div className="relative max-w-md mx-auto px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+              <div className="py-10 px-6 bg-gradient-to-l from-sky-800 to-cyan-700 rounded-3xl sm:py-16 sm:px-12 lg:py-20 lg:px-20 lg:flex lg:items-center">
+                <div className="lg:w-0 lg:flex-1">
+                  <h2 className="text-3xl font-extrabold tracking-tight text-white">Sign up for our newsletter</h2>
+                  <p className="mt-4 max-w-3xl text-lg text-cyan-100">
+                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt
+                    amet fugiat.
+                  </p>
+                </div>
+                <div className="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1">
+                  <form className="sm:flex">
+                    <label htmlFor="email-address" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="email-address"
+                      name="email-address"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      className="w-full border-white px-5 py-3 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-white rounded-md"
+                      placeholder="Enter your email"
+                    />
+                    <button
+                      type="submit"
+                      className="mt-3 w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-green-400 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
+                    >
+                      Notify me
+                    </button>
+                  </form>
+                  <p className="mt-3 text-sm text-cyan-100">
+                    We care about the protection of your data. Read our{' '}
+                    <a href="#" className="text-white font-medium underline">
+                      Privacy Policy.
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer className="bg-white" aria-labelledby="footer-heading">
+          <h2 id="footer-heading" className="sr-only">
+            Footer
+          </h2>
+          <div className="max-w-md mx-auto py-12 px-4 sm:max-w-3xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+              <div className="space-y-8 xl:col-span-1">
+                <img
+                  className="h-10"
+                  src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=400"
+                  alt="Company name"
+                />
+                <p className="text-stone-500 text-base">
+                  Making the world a better place through constructing elegant hierarchies.
+                </p>
+                <div className="flex space-x-6">
+                  {footerNavigation.social.map((item) => (
+                    <a key={item.name} href={item.href} className="text-stone-400 hover:text-stone-500">
+                      <span className="sr-only">{item.name}</span>
+                      <item.icon className="h-6 w-6" aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                <div className="md:grid md:grid-cols-2 md:gap-8">
+                  <div>
+                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Solutions</h3>
+                    <ul role="list" className="mt-4 space-y-4">
+                      {footerNavigation.solutions.map((item) => (
+                        <li key={item.name}>
+                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-12 md:mt-0">
+                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Support</h3>
+                    <ul role="list" className="mt-4 space-y-4">
+                      {footerNavigation.support.map((item) => (
+                        <li key={item.name}>
+                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="md:grid md:grid-cols-2 md:gap-8">
+                  <div>
+                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Company</h3>
+                    <ul role="list" className="mt-4 space-y-4">
+                      {footerNavigation.company.map((item) => (
+                        <li key={item.name}>
+                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-12 md:mt-0">
+                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Legal</h3>
+                    <ul role="list" className="mt-4 space-y-4">
+                      {footerNavigation.legal.map((item) => (
+                        <li key={item.name}>
+                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-12 border-t border-stone-200 pt-8">
+              <p className="text-base text-stone-400 xl:text-center">
+                &copy; 2020 Workflow, Inc. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </Helmet>
   )
 }
