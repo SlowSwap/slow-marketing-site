@@ -4,6 +4,6 @@ module.exports = {
     siteUrl: `https://slowswap.io`,
   },
   plugins: [
-
+    `gatsby-plugin-postcss`
   ]
 }
