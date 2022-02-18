@@ -108,6 +108,14 @@ const helmetProps: HelmetProps = {
                 name: `twitter:description`,
                 content: desc,
             },
+            {
+                name: `twitter:image`,
+                content: socialBanner,
+            },
+            {
+                name: `twitter:url`,
+                content: siteUrl,
+            },
         ]
 }
 
@@ -124,7 +132,7 @@ const structuredData = {
     "mainEntityOfPage": "https://slowswap.io/#organization",
     "url": "https://slowswap.io",
     "sameAs": [
-        "https://twitter.com/SlowSwap_",
+        "https://twitter.com/SlowSwap",
         "https://github.com/slowswap",
         "https://youtube.com/slowswap",
         "https://hackerlink.io/buidl/" // TODO - add the id when we have it this
