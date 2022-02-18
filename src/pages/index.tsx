@@ -135,7 +135,7 @@ export default function Index() {
                         <span className="sr-only">SlowStop</span>
                         <img
                           className="h-8 w-auto sm:h-10"
-                          src="http://localhost:8000/logo.svg"
+                          src="https://slowswap.io/logo.svg"
                           alt=""
                         />
                       </a>
@@ -185,7 +185,7 @@ export default function Index() {
                       <div>
                         <img
                           className="h-8 w-auto"
-                          src="http://localhost:8000/logo.svg"
+                          src="https://slowswap.io/logo.svg"
                           alt=""
                         />
                       </div>
@@ -255,7 +255,7 @@ export default function Index() {
                 <div className="h-full xl:relative xl:col-start-2">
                   <img
                     className="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0"
-                    src="http://localhost:8000/sloth-pattern-1.jpeg"
+                    src="https://slowswap.io/sloth-pattern-1.jpeg"
                     alt="People working on laptops"
                   />
                   <div
@@ -383,7 +383,7 @@ export default function Index() {
                 <div className="flex items-end gap-2">
                   <img
                     className="h-10"
-                    src="http://localhost:8000/logo.svg"
+                    src="https://slowswap.io/logo.svg"
                     alt="SlowSwap"
                   />
                   <span className="text-blue-purple-400 inline text-5xl tracking-tight font-bold">SlowSwap</span>
