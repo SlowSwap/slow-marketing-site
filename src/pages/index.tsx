@@ -1,106 +1,35 @@
 import React, { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { ScaleIcon, CashIcon, ClockIcon } from '@heroicons/react/outline'
 import tw from 'twin.macro'
 import { Helmet } from "react-helmet"
 import { helmetProps, structuredData } from '../helmetProps'
 import '../styles/index.css'
+import { disconnect } from 'process'
 
 const navigation = [
-  { name: 'Changelog', href: '#' },
-  { name: 'About', href: '#' },
-  { name: 'Partners', href: '#' },
-  { name: 'News', href: '#' },
-]
-const contactDetails = [
-  { name: 'Collaborate', email: 'support@example.com', telephone: '+1 (555) 123-4567' },
-  { name: 'Press', email: 'support@example.com', telephone: '+1 (555) 123-4567' },
-  { name: 'Join our team', email: 'support@example.com', telephone: '+1 (555) 123-4567' },
-  { name: 'Say hello', email: 'support@example.com', telephone: '+1 (555) 123-4567' },
-]
-const locations = [
-  { city: 'Los Angeles', address: ['4556 Brendan Ferry', 'Los Angeles, CA 90210'] },
-  { city: 'New York', address: ['886 Walter Streets', 'New York, NY 12345'] },
-  { city: 'Toronto', address: ['7363 Cynthia Pass', 'Toronto, ON N3Y 4H8'] },
-  { city: 'Chicago', address: ['726 Mavis Island', 'Chicago, IL 60601'] },
+  { name: 'Vote for us', href: 'https://hackerlink.io/hackathon/ethdenver22/' },  // update thisTODO
+  // { name: 'How it works', href: '#how-it-works' },
+  // { nam: 'Github',  href: ""},
+  // { name: 'News', href: '#' },
 ]
 const faqs = [
   {
     id: 1,
-    question: 'How do you make holy water?',
+    question: 'What\'s a VDF?',
     answer:
-      'You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.',
+      'A Varifiable Delayed Function. You do some calculations that are included with your transaction, and the AMM has to do the same calculation.',
   },
   {
     id: 2,
-    question: "What's the best thing about Switzerland?",
+    question: "What's the downside?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  {
-    id: 3,
-    question: 'What do you call someone with no body and no nose?',
-    answer: 'Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.',
-  },
-  {
-    id: 4,
-    question: 'Why do you never see elephants hiding in trees?',
-    answer:
-      "Because they're so good at it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "It costs more gas, and wont work with sawp-aggregators.",
   },
 ]
 const footerNavigation = {
-  solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
-  ],
-  support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-    { name: 'API Status', href: '#' },
-  ],
-  company: [
-    { name: 'About', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Partners', href: '#' },
-  ],
-  legal: [
-    { name: 'Claim', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
-  ],
   social: [
-    {
-      name: 'Facebook',
-      href: '#',
-      icon: (props: any) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: 'Instagram',
-      href: '#',
-      icon: (props: any) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
     {
       name: 'Twitter',
       href: '#',
@@ -124,273 +53,341 @@ const footerNavigation = {
       ),
     },
     {
-      name: 'Dribbble',
+      name: 'Telegram',
       href: '#',
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+
           <path
             fillRule="evenodd"
-            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+            d="M22.05 1.577c-.393-.016-.784.08-1.117.235-.484.186-4.92 1.902-9.41 3.64-2.26.873-4.518 1.746-6.256 2.415-1.737.67-3.045 1.168-3.114 1.192-.46.16-1.082.362-1.61.984-.133.155-.267.354-.335.628s-.038.622.095.895c.265.547.714.773 1.244.976 1.76.564 3.58 1.102 5.087 1.608.556 1.96 1.09 3.927 1.618 5.89.174.394.553.54.944.544l-.002.02s.307.03.606-.042c.3-.07.677-.244 1.02-.565.377-.354 1.4-1.36 1.98-1.928l4.37 3.226.035.02s.484.34 1.192.388c.354.024.82-.044 1.22-.337.403-.294.67-.767.795-1.307.374-1.63 2.853-13.427 3.276-15.38l-.012.046c.296-1.1.187-2.108-.496-2.705-.342-.297-.736-.427-1.13-.444zm-.118 1.874c.027.025.025.025.002.027-.007-.002.08.118-.09.755l-.007.024-.005.022c-.432 1.997-2.936 13.9-3.27 15.356-.046.196-.065.182-.054.17-.1-.015-.285-.094-.3-.1l-7.48-5.525c2.562-2.467 5.182-4.7 7.827-7.08.468-.235.39-.96-.17-.972-.594.14-1.095.567-1.64.84-3.132 1.858-6.332 3.492-9.43 5.406-1.59-.553-3.177-1.012-4.643-1.467 1.272-.51 2.283-.886 3.278-1.27 1.738-.67 3.996-1.54 6.256-2.415 4.522-1.748 9.07-3.51 9.465-3.662l.032-.013.03-.013c.11-.05.173-.055.202-.057 0 0-.01-.033-.002-.026zM10.02 16.016l1.234.912c-.532.52-1.035 1.01-1.398 1.36z"
             clipRule="evenodd"
           />
         </svg>
       ),
     },
+    {
+      name: 'Discord',
+      href: '#',
+      icon: (props: any) => (
+        <svg fill="currentColor" viewBox="0 0 71 55" {...props}>
+          <path
+            fillRule="evenodd"
+            d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ),
+    },
+
   ],
 }
+const metrics = [
+  { id: 1, stat: 'Better Execution', emphasis: 'Pay more gas', rest: 'to get less slippage.' },
+  { id: 2, stat: 'Earn more', emphasis: 'LPs earn more', rest: 'than AMMs gamed by MEV' },
+  { id: 3, stat: '30 second wait', emphasis: 'VDF generation', rest: 'takes roughly 30 seconds' },
+  { id: 4, stat: 'Based on Uniswap v2', emphasis: 'At worst,', rest: "you'll get the UniV2 experience." },
+]
+const features = [
+  {
+    name: 'Better Execution',
+    description:
+      'Pay more gas to get less slippage.',
+    icon: ScaleIcon,
+  },
+  {
+    name: 'Earn more',
+    description: 'Less of the LP fees will go to MEV transactions - more for you.',
+    icon: CashIcon,
+  },
+  // {
+  //   name: '30 second wait',
+  //   description:
+  //     'The VDF required to transact takes roughly 30 seconds to generate.',
+  //   icon: ClockIcon,
+  // },
+  // {
+  //   name: 'Based on Uniswap v2',
+  //   description:
+  //     "At worst, you'll get the UniV2 experience.",
+  //   icon: (props: React.ComponentProps<'svg'>) => <svg {...props} fill="white" viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg"><path d="M4.152 1.551c-.188-.029-.196-.032-.107-.045.17-.026.57.009.846.074.644.152 1.23.542 1.856 1.235l.166.184.238-.038c1.002-.16 2.02-.033 2.873.358.235.108.605.322.65.377.016.018.043.13.06.251.064.418.033.737-.096.976-.07.13-.074.171-.027.283a.274.274 0 0 0 .246.154c.212 0 .44-.34.545-.814l.042-.189.083.094c.457.514.815 1.214.876 1.712l.016.13-.076-.118a1.462 1.462 0 0 0-.435-.453c-.306-.201-.63-.27-1.486-.315-.774-.04-1.212-.106-1.646-.247-.739-.24-1.111-.558-1.989-1.702-.39-.509-.63-.79-.87-1.016-.545-.515-1.08-.785-1.765-.89Z"></path><path d="M10.85 2.686c.019-.34.065-.565.159-.77a.825.825 0 0 1 .077-.148c.005 0-.011.06-.036.133-.068.2-.08.472-.032.789.06.402.093.46.52.894.201.204.434.46.519.571l.154.2-.154-.143c-.188-.175-.62-.517-.716-.566-.064-.032-.074-.032-.113.007-.037.036-.044.09-.05.346-.007.399-.062.655-.194.91-.071.14-.082.11-.018-.047.048-.116.053-.168.053-.554 0-.775-.094-.962-.637-1.28a5.971 5.971 0 0 0-.504-.26 1.912 1.912 0 0 1-.246-.12c.015-.015.545.139.758.22.318.122.37.137.409.123.025-.01.038-.085.05-.305ZM4.517 4.013c-.381-.522-.618-1.323-.566-1.922l.015-.185.087.015c.164.03.445.134.577.214.361.218.518.505.677 1.243.047.216.108.46.136.544.045.133.217.444.356.646.1.146.034.215-.188.195-.339-.03-.798-.345-1.094-.75ZM10.386 7.9c-1.784-.713-2.412-1.333-2.412-2.378 0-.154.005-.28.012-.28.006 0 .075.05.153.113.362.288.767.411 1.889.574.66.096 1.03.173 1.373.286 1.09.359 1.763 1.087 1.924 2.08.046.288.02.828-.057 1.113-.06.225-.242.63-.29.646-.014.005-.027-.046-.03-.116-.018-.372-.208-.735-.526-1.007-.362-.309-.848-.555-2.036-1.03ZM9.134 8.197a3.133 3.133 0 0 0-.086-.375l-.046-.135.085.095c.117.13.21.297.288.52.06.17.066.22.066.496 0 .271-.008.328-.064.48a1.518 1.518 0 0 1-.376.596c-.326.33-.745.512-1.35.588-.105.013-.411.035-.68.049-.679.035-1.126.108-1.527.248a.324.324 0 0 1-.115.027c-.016-.016.258-.178.483-.286.318-.153.635-.236 1.345-.353.35-.058.713-.129.805-.157.868-.264 1.315-.947 1.172-1.793Z"></path><path d="M9.952 9.641c-.237-.506-.292-.995-.162-1.451.014-.05.036-.089.05-.089.013 0 .07.03.124.067.11.073.328.196.912.512.728.395 1.144.7 1.426 1.05.247.305.4.654.474 1.078.042.24.017.82-.045 1.062-.196.764-.65 1.364-1.3 1.714-.095.051-.18.093-.19.093-.009 0 .026-.087.077-.194.219-.454.244-.895.079-1.386-.102-.301-.308-.668-.724-1.289-.484-.72-.602-.913-.721-1.167ZM3.25 12.374c.663-.556 1.486-.95 2.237-1.072a3.51 3.51 0 0 1 1.161.045c.48.122.91.396 1.133.721.218.319.312.596.41 1.214.038.243.08.488.092.543.073.32.216.576.392.704.28.204.764.217 1.239.033a.618.618 0 0 1 .155-.048c.017.017-.222.176-.39.26a1.334 1.334 0 0 1-.648.156c-.435 0-.796-.22-1.098-.668a5.3 5.3 0 0 1-.296-.588c-.318-.721-.475-.94-.844-1.181-.322-.21-.737-.247-1.049-.095-.41.2-.524.72-.23 1.05a.911.911 0 0 0 .512.266.545.545 0 0 0 .619-.544c0-.217-.084-.34-.295-.436-.289-.129-.598.022-.597.291 0 .115.051.187.167.24.074.033.076.035.015.023-.264-.055-.326-.372-.114-.582.256-.252.784-.141.965.204.076.145.085.433.019.607-.15.39-.582.595-1.022.483-.3-.076-.421-.158-.782-.527-.627-.642-.87-.767-1.774-.907l-.174-.027.197-.165Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M.308.884C2.402 3.41 3.845 4.452 4.005 4.672c.132.182.082.346-.144.474a1.381 1.381 0 0 1-.515.143c-.147 0-.198-.056-.198-.056-.085-.08-.133-.066-.57-.837A132.96 132.96 0 0 0 1.45 2.67c-.032-.03-.031-.03 1.067 1.923.177.407.035.556.035.614 0 .118-.033.18-.179.343-.244.27-.353.574-.432 1.203-.088.705-.336 1.203-1.024 2.056-.402.499-.468.59-.57.792-.128.253-.163.395-.177.714-.015.339.014.557.118.88.09.284.186.47.429.844.21.323.33.563.33.657 0 .074.014.074.34.001.776-.174 1.407-.48 1.762-.857.22-.233.271-.361.273-.68.001-.208-.006-.252-.063-.372-.092-.195-.26-.358-.63-.61-.486-.33-.694-.595-.75-.96-.048-.3.007-.511.275-1.07.278-.58.347-.827.394-1.41.03-.377.071-.526.18-.646.114-.124.216-.166.498-.204.459-.063.75-.18.99-.4a.853.853 0 0 0 .31-.652l.01-.21-.117-.134C4.098 4.004.026.5 0 .5-.005.5.133.673.308.884Zm.976 9.815a.37.37 0 0 0-.115-.489c-.15-.1-.385-.052-.385.077 0 .04.022.069.072.094.084.043.09.091.024.19-.067.099-.061.186.015.246.123.095.297.043.389-.118ZM4.925 5.999c-.215.065-.424.292-.49.53-.039.145-.016.4.043.478.096.127.188.16.439.159.49-.003.916-.212.966-.474.04-.214-.147-.51-.405-.641a.965.965 0 0 0-.553-.052Zm.574.445c.075-.107.042-.222-.087-.3-.244-.149-.615-.026-.615.204 0 .115.193.24.37.24.118 0 .28-.07.332-.144Z"></path></svg>
+  // },
+]
 
 export default function Index() {
   return (
-    <Helmet {...helmetProps}>
-      <script type="application/ld+json">{JSON.stringify(structuredData, undefined, 4)}</script>
+    <>
+      <Helmet {...helmetProps}>
+        {/* ld+json is structured data for machines parsing the page */}
+        <script type="application/ld+json">{JSON.stringify(structuredData, undefined, 4)}</script>
+      </Helmet>
       <div className="bg-white">
-        <header className="relative pb-24 bg-sky-800 sm:pb-32">
-          <div className="absolute inset-0">
-            <img
-              className="w-full h-full object-cover"
-              src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100"
-              alt=""
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-l from-sky-800 to-cyan-700 mix-blend-multiply"
-              aria-hidden="true"
-            />
-          </div>
-          <Popover as="div" className="relative z-10">
-            <nav
-              className="relative max-w-7xl mx-auto flex items-center justify-between pt-6 pb-2 px-4 sm:px-6 lg:px-8"
-              aria-label="Global"
-            >
-              <div className="flex items-center justify-between w-full lg:w-auto">
-                <a href="#">
-                  <span className="sr-only">Workflow</span>
-                  <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=300"
-                    alt=""
-                  />
-                </a>
-                <div className="-mr-2 flex items-center lg:hidden">
-                  <Popover.Button className="bg-sky-800 bg-opacity-0 rounded-md p-2 inline-flex items-center justify-center text-cyan-100 hover:bg-opacity-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
-                    <span className="sr-only">Open main menu</span>
-                    <MenuIcon className="h-6 w-6" aria-hidden="true" />
-                  </Popover.Button>
-                </div>
-              </div>
-              <div className="hidden space-x-10 lg:flex lg:ml-10">
-                {navigation.map((item) => (
-                  <a key={item.name} href={item.href} className="text-base font-medium text-white hover:text-cyan-100">
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-              <div className="hidden lg:flex lg:items-center lg:space-x-6">
-                <a
-                  href="#"
-                  className="py-2 px-6 bg-white bg-opacity-10 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-20"
-                >
-                  Login
-                </a>
-              </div>
-            </nav>
 
-            <Transition
-              as={Fragment}
-              enter="duration-150 ease-out"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="duration-100 ease-in"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
-            >
-              <Popover.Panel focus className="absolute top-0 inset-x-0 p-2 transition transform origin-top lg:hidden p-">
-                <div className="rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-                  <div className="px-5 pt-4 flex items-center justify-between">
-                    <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=400"
-                        alt=""
-                      />
-                    </div>
-                    <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-stone-400 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
-                        <span className="sr-only">Close menu</span>
-                        <XIcon className="h-6 w-6" aria-hidden="true" />
-                      </Popover.Button>
+        <header className="relative bg-gray-50 overflow-hidden">
+
+          <div className="relative pt-6 pb-16 sm:pb-24">
+            <Popover>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                <nav className="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
+                  <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+                    <div className="flex items-center justify-between w-full md:w-auto">
+                      <a href="#">
+                        <span className="sr-only">SlowStop</span>
+                        <img
+                          className="h-8 w-auto sm:h-10"
+                          src="http://localhost:8000/logo.svg"
+                          alt=""
+                        />
+                      </a>
+                      <div className="-mr-2 flex items-center sm:hidden">
+                        <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-purple-400">
+                          <span className="sr-only">Open main menu</span>
+                          <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                        </Popover.Button>
+                      </div>
                     </div>
                   </div>
-                  <div className="pt-5 pb-6">
-                    <div className="px-2 space-y-1">
+                  <div className="hidden md:flex md:space-x-10">
+                    {navigation.map((item) => (
+                      <a key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                  <div className="hidden sm:absolute sm:flex sm:items-center sm:justify-end sm:inset-y-0 sm:right-0">
+                    <span className="inline-flex rounded-md shadow">
+                      <a
+                        href="#"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-purple-500 hover:bg-blue-purple-600"
+                      >
+                        Launch App
+                      </a>
+                    </span>
+                  </div>
+                </nav>
+              </div>
+
+              <Transition
+                as={Fragment}
+                enter="duration-150 ease-out"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="duration-100 ease-in"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Popover.Panel
+                  focus
+                  className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+                >
+                  <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                    <div className="px-5 pt-4 flex items-center justify-between">
+                      <div>
+                        <img
+                          className="h-8 w-auto"
+                          src="http://localhost:8000/logo.svg"
+                          alt=""
+                        />
+                      </div>
+                      <div className="-mr-2">
+                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-purple-500">
+                          <span className="sr-only">Close menu</span>
+                          <XIcon className="h-6 w-6" aria-hidden="true" />
+                        </Popover.Button>
+                      </div>
+                    </div>
+                    <div className="px-2 pt-2 pb-3">
                       {navigation.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-stone-900 hover:bg-stone-50"
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                         >
                           {item.name}
                         </a>
                       ))}
                     </div>
-                    <div className="mt-6 px-5">
+                    <a
+                      href="#"
+                      className="hidden sm:block w-full px-5 py-3 text-center font-medium text-white bg-blue-purple-500 hover:bg-blue-purple-600"
+                    >
+                      Launch App
+                    </a>
+                  </div>
+                </Popover.Panel>
+              </Transition>
+            </Popover>
+
+            <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
+              <div className="text-center">
+                <h1 className="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+                  <span className="block xl:inline">Get more with</span>{' '}
+                  <span className="block text-blue-purple-500 xl:inline">SlowSwap</span>
+                </h1>
+                <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                  AMMs with VDFs discourage MEV front-running and sandwiching.
+                </p>
+                <div className="sm:hidden">
+                  <div className="mt-5 max-w-md  mx-auto flex justify-center ">
+                    <div className="rounded-md shadow ">
                       <a
                         href="#"
-                        className="block text-center w-full py-2 px-4 border border-transparent rounded-md shadow bg-green-400 text-white font-medium hover:bg-green-500"
+                        className="w-full max-w-[200px] flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-purple-500 hover:bg-blue-purple-600"
                       >
-                        Login
+                        Launch App
                       </a>
                     </div>
                   </div>
                 </div>
-              </Popover.Panel>
-            </Transition>
-          </Popover>
-
-          <div className="relative mt-24 max-w-md mx-auto px-4 sm:max-w-3xl sm:mt-32 sm:px-6 lg:max-w-7xl lg:px-8">
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">Get in touch</h1>
-            <p className="mt-6 text-xl text-cyan-100 max-w-3xl">
-              Mattis amet hendrerit dolor, quisque lorem pharetra. Pellentesque lacus nisi urna, arcu sociis eu. Orci vel
-              lectus nisl eget eget ut consectetur. Sit justo viverra non adipisicing elit distinctio.
-            </p>
+              </div>
+            </main>
           </div>
         </header>
 
         <main>
-          {/* Side-by-side grid */}
-          <div className="bg-white">
-            <div className="max-w-md mx-auto py-24 px-4 sm:max-w-3xl sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
-              <div className="divide-y divide-stone-200">
-                <section className="lg:grid lg:grid-cols-3 lg:gap-8" aria-labelledby="contact-heading">
-                  <h2 id="contact-heading" className="text-2xl font-extrabold text-stone-900 sm:text-3xl">
-                    Get in touch
-                  </h2>
-                  <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
-                    {contactDetails.map((item) => (
-                      <div key={item.name}>
-                        <h3 className="text-lg font-medium text-stone-900">{item.name}</h3>
-                        <dl className="mt-2 text-base text-stone-500">
-                          <div>
-                            <dt className="sr-only">Email</dt>
-                            <dd>{item.email}</dd>
-                          </div>
-                          <div className="mt-1">
-                            <dt className="sr-only">Phone number</dt>
-                            <dd>{item.telephone}</dd>
-                          </div>
-                        </dl>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-                <section className="mt-16 pt-16 lg:grid lg:grid-cols-3 lg:gap-8" aria-labelledby="location-heading">
-                  <h2 id="location-heading" className="text-2xl font-extrabold text-stone-900 sm:text-3xl">
-                    Locations
-                  </h2>
-                  <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
-                    {locations.map((location) => (
-                      <div key={location.city}>
-                        <h3 className="text-lg font-medium text-stone-900">{location.city}</h3>
-                        <div className="mt-2 text-base text-stone-500 space-y-1">
-                          {location.address.map((line) => (
-                            <p key={line}>{line}</p>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
+
+
+
+
+          <div className="relative bg-blue-purple-700" id="how-it-works">
+            <div className="h-full w-full absolute bottom-0 xl:inset-0 xl:h-full">
+              <div className="h-full w-full xl:grid xl:grid-cols-2">
+                <div className="h-full xl:relative xl:col-start-2">
+                  <img
+                    className="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0"
+                    src="http://localhost:8000/sloth-pattern-1.jpeg"
+                    alt="People working on laptops"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-blue-purple-700 xl:inset-y-0 xl:left-0 xl:h-full xl:w-full xl:bg-gradient-to-r"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
+              <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24 ">
+                <h2 className="text-sm font-semibold text-blue-purple-200 tracking-wide uppercase">dont show your cards</h2>
+                <p className="mt-3 text-3xl font-bold text-white">
+                  Hide your trade from the mempool
+                </p>
+                <p className="mt-5 text-lg text-gray-300">
+                  Submitting a VDF with your swap prevents mempool-watchers from reacting to your trade.
+                </p>
+                <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
+                  {metrics.map((item) => (
+                    <p key={item.id}>
+                      <span className="block text-2xl font-bold text-white">{item.stat}</span>
+                      <span className="mt-1 block text-base text-gray-300">
+                        <span className="font-medium text-white">{item.emphasis}</span> {item.rest}
+                      </span>
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* FAQ */}
-          <div className="bg-stone-50">
-            <div className="max-w-md mx-auto py-24 px-4 sm:max-w-3xl sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
+
+
+          <div className="bg-white" >
+            <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-12 lg:px-8">
               <div className="lg:grid lg:grid-cols-3 lg:gap-8">
                 <div>
-                  <h2 className="text-3xl font-extrabold text-stone-900">Frequently asked questions</h2>
-                  <p className="mt-4 text-lg text-stone-500">
-                    Can’t find the answer you’re looking for? Reach out to our{' '}
-                    <a href="#" className="font-medium text-cyan-700 hover:text-cyan-600">
-                      customer support
-                    </a>{' '}
-                    team.
+                  <h2 className="text-3xl font-bold text-gray-900">How it works</h2>
+                  <p className="mt-4 text-lg text-gray-500">
+                    We forked Uniswap v2 and added a VDF.
                   </p>
                 </div>
                 <div className="mt-12 lg:mt-0 lg:col-span-2">
                   <dl className="space-y-12">
                     {faqs.map((faq) => (
-                      <div key={faq.id}>
-                        <dt className="text-lg font-medium text-stone-900">{faq.question}</dt>
-                        <dd className="mt-2 text-base text-stone-500">{faq.answer}</dd>
+                      <div key={faq.question}>
+                        <dt className="text-lg leading-6 font-medium text-gray-900">{faq.question}</dt>
+                        <dd className="mt-2 text-base text-gray-500">{faq.answer}</dd>
                       </div>
                     ))}
+                    <div>
+                      <dt className="text-lg leading-6 font-medium text-gray-900">How did the project start?</dt>
+                      <dd className="mt-2 text-base text-gray-500">
+                        As a hackthon project for{' '}
+                        <a href="#" className="font-medium text-blue-purple-500 hover:text-blue-purple-400">
+                          EthDenver 2022
+                        </a>
+                      </dd>
+                    </div>
                   </dl>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Newsletter */}
-          <div className="relative">
-            <div className="absolute left-0 right-0 h-1/2 bg-stone-50" aria-hidden="true" />
-            <div className="relative max-w-md mx-auto px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-              <div className="py-10 px-6 bg-gradient-to-l from-sky-800 to-cyan-700 rounded-3xl sm:py-16 sm:px-12 lg:py-20 lg:px-20 lg:flex lg:items-center">
-                <div className="lg:w-0 lg:flex-1">
-                  <h2 className="text-3xl font-extrabold tracking-tight text-white">Sign up for our newsletter</h2>
-                  <p className="mt-4 max-w-3xl text-lg text-cyan-100">
-                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt
-                    amet fugiat.
-                  </p>
+          {/*
+          <div className="bg-blue-purple-700 overflow-hidden">
+            <div className="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+              <svg
+                className="absolute top-0 left-full transform -translate-x-1/2 -translate-y-3/4 lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
+                width={404}
+                height={784}
+                fill="none"
+                viewBox="0 0 404 784"
+                aria-hidden="true"
+              >
+                <defs>
+                  <pattern
+                    id="8b1b5f72-e944-4457-af67-0c6d15a99f38"
+                    x={0}
+                    y={0}
+                    width={20}
+                    height={20}
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <rect x={0} y={0} width={4} height={4} className="text-gray-700" fill="currentColor" />
+                  </pattern>
+                </defs>
+                <rect width={404} height={784} fill="url(#8b1b5f72-e944-4457-af67-0c6d15a99f38)" />
+              </svg>
+
+              <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-8">
+                <div className="lg:col-span-1">
+                  <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                    more for your swap,<br />more for LPs.
+                  </h2>
                 </div>
-                <div className="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1">
-                  <form className="sm:flex">
-                    <label htmlFor="email-address" className="sr-only">
-                      Email address
-                    </label>
-                    <input
-                      id="email-address"
-                      name="email-address"
-                      type="email"
-                      autoComplete="email"
-                      required
-                      className="w-full border-white px-5 py-3 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-white rounded-md"
-                      placeholder="Enter your email"
-                    />
-                    <button
-                      type="submit"
-                      className="mt-3 w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-green-400 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
-                    >
-                      Notify me
-                    </button>
-                  </form>
-                  <p className="mt-3 text-sm text-cyan-100">
-                    We care about the protection of your data. Read our{' '}
-                    <a href="#" className="text-white font-medium underline">
-                      Privacy Policy.
-                    </a>
-                  </p>
-                </div>
+                <dl className="mt-10 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:mt-0 lg:col-span-2">
+                  {features.map((feature) => (
+                    <div key={feature.name}>
+                      <dt>
+                        <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-purple-400 text-white">
+                          <feature.icon className="h-6 w-6" aria-hidden="true" />
+                        </div>
+                        <p className="mt-5 text-lg leading-6 font-medium text-white">{feature.name}</p>
+                      </dt>
+                      <dd className="mt-2 text-base text-white">{feature.description}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </div>
-          </div>
+          </div> */}
+
         </main>
 
         <footer className="bg-white" aria-labelledby="footer-heading">
           <h2 id="footer-heading" className="sr-only">
             Footer
           </h2>
-          <div className="max-w-md mx-auto py-12 px-4 sm:max-w-3xl sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+          <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 sm:py-24 lg:py-12 lg:px-8">
             <div className="xl:grid xl:grid-cols-3 xl:gap-8">
               <div className="space-y-8 xl:col-span-1">
-                <img
-                  className="h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark.svg?color=emerald&shade=400"
-                  alt="Company name"
-                />
-                <p className="text-stone-500 text-base">
-                  Making the world a better place through constructing elegant hierarchies.
-                </p>
+                <div className="flex items-end gap-2">
+                  <img
+                    className="h-10"
+                    src="http://localhost:8000/logo.svg"
+                    alt="SlowSwap"
+                  />
+                  <span className="text-blue-purple-400 inline text-5xl tracking-tight font-bold">SlowSwap</span>
+                </div>
                 <div className="flex space-x-6">
                   {footerNavigation.social.map((item) => (
                     <a key={item.name} href={item.href} className="text-stone-400 hover:text-stone-500">
@@ -399,70 +396,15 @@ export default function Index() {
                     </a>
                   ))}
                 </div>
+                <p className="text-base text-stone-400">
+                  &copy; {new Date().getFullYear()} SlowSwap
+                </p>
               </div>
-              <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-                <div className="md:grid md:grid-cols-2 md:gap-8">
-                  <div>
-                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Solutions</h3>
-                    <ul role="list" className="mt-4 space-y-4">
-                      {footerNavigation.solutions.map((item) => (
-                        <li key={item.name}>
-                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="mt-12 md:mt-0">
-                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Support</h3>
-                    <ul role="list" className="mt-4 space-y-4">
-                      {footerNavigation.support.map((item) => (
-                        <li key={item.name}>
-                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="md:grid md:grid-cols-2 md:gap-8">
-                  <div>
-                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Company</h3>
-                    <ul role="list" className="mt-4 space-y-4">
-                      {footerNavigation.company.map((item) => (
-                        <li key={item.name}>
-                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="mt-12 md:mt-0">
-                    <h3 className="text-sm font-semibold text-stone-700 tracking-wider uppercase">Legal</h3>
-                    <ul role="list" className="mt-4 space-y-4">
-                      {footerNavigation.legal.map((item) => (
-                        <li key={item.name}>
-                          <a href={item.href} className="text-base text-stone-500 hover:text-stone-900">
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-12 border-t border-stone-200 pt-8">
-              <p className="text-base text-stone-400 xl:text-center">
-                &copy; 2020 Workflow, Inc. All rights reserved.
-              </p>
             </div>
           </div>
+
         </footer>
-      </div>
-    </Helmet>
+      </div >
+    </>
   )
 }

@@ -2,10 +2,10 @@ import { HelmetProps } from "react-helmet"
 
 // just supporting a singe page, so hardcoding for now
 const siteUrl = "https://slowswap.io"
-const title = "🐌SlowSwap"                        // TODO - update
-const desc = "Swaps that deter sandwich attacks"  // TODO - update
+const title = "🦥SlowSwap"
+const desc = "Swaps that discourage MEV"
 
-const socialBanner = `${siteUrl}/static/banner.png` // cannot be SVG
+const socialBanner = `${siteUrl}/banner.png` // cannot be SVG
 const socialBannerHeight = '400' // no unit on purpose
 const socialBannerWidth = '800'  // no unit on purpose
 
@@ -21,12 +21,48 @@ const helmetProps: HelmetProps = {
             rel: "canonical",
             href: siteUrl,
         },
+        {
+            rel: "apple-touch-icon",
+            href: siteUrl + "/apple-touch-icon.png",
+            sizes: "180x180",
+        },
+        {
+            rel: "icon",
+            href: siteUrl + "/favicon-32x32.png",
+            sizes: "32x32",
+            type: "image/png",
+        },
+        {
+            rel: "icon",
+            href: siteUrl + "/favicon-16x16.png",
+            sizes: "16x16",
+            type: "image/png",
+        },
+
+        {
+            rel: "mask-icon",
+            href: siteUrl + "/safari-pinned-tab.svg",
+            color: "#ad5bd5",
+        },
+        {
+            rel: "manifest",
+            href: siteUrl + "/site.webmanifest"
+        }
+
     ],
     meta:
         [
             {
                 name: `description`,
                 content: desc
+            },
+            {
+                name: 'msapplication-TileColor',
+                content: '#00aba9'
+            },
+            {
+                name: 'theme-color',
+                content: '#6464C0'
             },
 
             // OpenGraph data
@@ -76,7 +112,7 @@ const helmetProps: HelmetProps = {
 }
 
 const logo = {
-    url: `${siteUrl}/static/logo.png`,
+    url: `${siteUrl}/logo.png`,
     width: '400px',
     height: '400px'
 }
@@ -90,11 +126,11 @@ const structuredData = {
     "sameAs": [
         "https://twitter.com/SlowSwap_",
         "https://github.com/slowswap",
-        "https://youtube.com/slowSwap",
+        "https://youtube.com/slowswap",
         "https://hackerlink.io/buidl/" // TODO - add the id when we have it this
     ],
     "alternateName": [
-        "🐌SlowSwap",  // TODO - update with real emoji
+        "🦥SlowSwap",  // TODO - update with real emoji
         "Slow Swap"
     ],
     "description": desc,
