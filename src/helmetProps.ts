@@ -143,4 +143,22 @@ const structuredData = {
         ...logo
     }
 }
-export { helmetProps, structuredData }
+const youtubeUrl = "https://www.youtube.com/channel/UCBDacDYGJjLt6F_OhiORK6A"
+const twitterUrl = "https://twitter.com/SlowSwap"
+const discordUrl = "https://discord.gg/j3WzFtDZZc"
+const telegramUrl = "https://t.me/+QTXuENYiHg80N2Zh"
+const githubUrl = "https://github.com/slowswap"
+const hackerlinkUrl = "https://hackerlink.io/hackathon/ethdenver22/"
+const appUrl = "https://app.slowswap.io"
+
+export {
+    helmetProps,
+    structuredData,
+    youtubeUrl,
+    twitterUrl,
+    discordUrl,
+    telegramUrl,
+    githubUrl,
+    hackerlinkUrl,
+    appUrl
+}
