@@ -239,10 +239,10 @@ export default function Index() {
                 </p>
                 <br></br>
                 <img
-                    className="mx-auto h-full w-full"
-                    src="https://slowswap.io/drunk-morning.gif"
-                    alt=""
-                  />
+                  className="mx-auto h-4/6 w-4/6"
+                  src="https://slowswap.io/drunk-morning.gif"
+                  alt=""
+                />
                 <div className="sm:hidden">
                   <div className="mt-5 max-w-md  mx-auto flex justify-center ">
                     <div className="rounded-md shadow ">
