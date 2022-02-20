@@ -237,6 +237,12 @@ export default function Index() {
                 <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                   AMMs with VDFs discourage MEV front-running and sandwiching.
                 </p>
+                <br></br>
+                <img
+                    className="mx-auto h-full w-full"
+                    src="https://slowswap.io/drunk-morning.gif"
+                    alt=""
+                  />
                 <div className="sm:hidden">
                   <div className="mt-5 max-w-md  mx-auto flex justify-center ">
                     <div className="rounded-md shadow ">
@@ -321,7 +327,7 @@ export default function Index() {
                       <dt className="text-lg leading-6 font-medium text-gray-900">How did the project start?</dt>
                       <dd className="mt-2 text-base text-gray-500">
                         As a hackthon project for{' '}
-                        <a href="#" className="font-medium text-blue-purple-500 hover:text-blue-purple-400">
+                        <a href="https://hackerlink.io/buidl/2070" className="font-medium text-blue-purple-500 hover:text-blue-purple-400">
                           EthDenver 2022
                         </a>
                       </dd>
@@ -387,7 +393,7 @@ export default function Index() {
           <h2 id="footer-heading" className="sr-only">
             Footer
           </h2>
-          <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 sm:py-24 lg:py-12 lg:px-8">
+          <div className="max-w-2xl mx-auto py-12 px-4 sm:px-6 sm:py-24 lg:py-12 lg:px-8">
             <div className="xl:grid xl:grid-cols-3 xl:gap-8">
               <div className="space-y-8 xl:col-span-1">
                 <div className="flex items-end gap-2">
