@@ -278,10 +278,10 @@ export default function Index() {
               <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24 ">
                 <h2 className="text-sm font-semibold text-blue-purple-200 tracking-wide uppercase">don't lose ground to bots</h2>
                 <p className="mt-3 text-3xl font-bold text-white">
-                  Bots are constantly scanning the mempool for vulnerable AMM swaps that can be pushed to their limits by frontrunning your transaction with complementary swaps, leading to a worse final rate for you.
+                  Level the Playing Field with VDFs
                 </p>
                 <p className="mt-5 text-lg text-gray-300">
-                  Requiring a VDF for all swaps increases the reaction time a bot has to take advantage of your swap's price impact.
+                  Bots are constantly scanning the mempool for vulnerable AMM swaps that can be pushed to their slippage limits by frontrunning your transaction with complementary swaps, leading to a worse final rate for you.
                 </p>
                 <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
                   {metrics.map((item) => (
