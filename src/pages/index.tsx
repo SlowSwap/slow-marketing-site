@@ -89,7 +89,8 @@ const footerNavigation = {
 const metrics = [
   { id: 1, stat: 'MEV Resistant', emphasis: 'VDFs slow bots down', rest: 'so your swap has a better chance of settling at your quoted rate.' },
   { id: 2, stat: 'Gas-efficient Construction', emphasis: 'Only ~5-10k more gas', rest: 'than  than vanilla Uniswap V2.' },
-  { id: 3, stat: 'Based on Uniswap V2', emphasis: 'An industry-leading and secure', rest: "AMM model." },
+  { id: 3, stat: 'Trustless Operation', emphasis: 'You generate your own proof', rest: "and our permissionless contracts verify it transparently and objectively." },
+  { id: 4, stat: 'Based on Uniswap V2', emphasis: 'An industry-leading and secure', rest: "AMM model." },
 ]
 // const features = [
 //   {
