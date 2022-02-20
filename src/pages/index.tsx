@@ -327,7 +327,7 @@ export default function Index() {
                       <dt className="text-lg leading-6 font-medium text-gray-900">How did the project start?</dt>
                       <dd className="mt-2 text-base text-gray-500">
                         As a hackthon project for{' '}
-                        <a href="https://hackerlink.io/buidl/2070" className="font-medium text-blue-purple-500 hover:text-blue-purple-400">
+                        <a href="https://www.ethdenver.com/" target="_blank" className="font-medium text-blue-purple-500 hover:text-blue-purple-400">
                           EthDenver 2022
                         </a>
                       </dd>
