@@ -157,7 +157,7 @@ const discordUrl = "https://discord.gg/j3WzFtDZZc"
 const telegramUrl = "https://t.me/+QTXuENYiHg80N2Zh"
 const githubUrl = "https://github.com/slowswap"
 const hackerlinkUrl = "https://hackerlink.io/buidl/2070"
-const appUrl = "https://app.slowswap.io"
+const appUrl = "https://1d44f158.slow-front-end.pages.dev/#/swap"
 
 export {
     helmetProps,
